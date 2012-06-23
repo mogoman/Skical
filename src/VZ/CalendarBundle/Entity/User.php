@@ -20,19 +20,20 @@ class User extends BaseUser
 
     /**
      *
-     * @ORM\Column(type="string", length=128)
+     * @ORM\Column(type="string", length=128, nullable=true)
+     *
      */
     protected $firstName;
 
     /**
      *
-     * @ORM\Column(type="string", length=128)
+     * @ORM\Column(type="string", length=128, nullable=true)
      */
     protected $lastName;
 
     /**
      *
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=true)
      */
     protected $isMember;
 
