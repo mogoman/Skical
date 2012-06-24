@@ -19,6 +19,8 @@
         "jms/security-extra-bundle": "1.1.*",
         "jms/di-extra-bundle": "1.0.*",
         "friendsofsymfony/user-bundle": "*",
+        "knplabs/knp-menu-bundle": "1.1.0"
+
     },
     "scripts": {
         "post-install-cmd": [

@@ -31,6 +31,14 @@
                 <source>event_delete</source>
                 <target>Delete</target>
             </trans-unit>
+            <trans-unit id="not_enough_free_slots">
+                <source>not_enough_free_slots</source>
+                <target>Not enough free spaces available</target>
+            </trans-unit>
+            <trans-unit id="vz_calendar">
+                <source>vz_calendar</source>
+                <target>Booking System</target>
+            </trans-unit>
 
 
             <!-- errors / warnings -->

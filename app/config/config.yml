@@ -63,3 +63,10 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: VZ\CalendarBundle\Entity\User
+
+knp_menu:
+    twig:
+        template: knp_menu.html.twig
+    templating: false
+    default_renderer: twig
+

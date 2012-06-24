@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\Request;
 class IndexController extends Controller
 {
     /**
-     * @Route("/", name="vz_calendar_index_index")
+     * @Route("", name="vz_calendar_index_index")
      * @Template()
      */
     public function indexAction(Request $request)

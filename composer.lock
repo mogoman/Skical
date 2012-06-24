@@ -1,5 +1,5 @@
 {
-    "hash": "878772aa15c4e5d51607aa1478140c35",
+    "hash": "6470ce63ca945f6e1d834cc3d9c9936e",
     "packages": [
         {
             "package": "doctrine/common",
@@ -50,6 +50,16 @@
             "version": "1.1.0"
         },
         {
+            "package": "knplabs/knp-menu",
+            "version": "1.1.x-dev",
+            "source-reference": "v1.1.2",
+            "commit-date": "1339345240"
+        },
+        {
+            "package": "knplabs/knp-menu-bundle",
+            "version": "v1.1.0"
+        },
+        {
             "package": "kriswallsmith/assetic",
             "version": "dev-master",
             "alias-pretty-version": "1.1.x-dev",
@@ -82,12 +92,6 @@
             "version": "dev-master",
             "source-reference": "43ed45c48db18e4a0e48aec0c098f42e56e22d36",
             "commit-date": "1340138445"
-        },
-        {
-            "package": "swiftmailer/swiftmailer",
-            "version": "dev-master",
-            "alias-pretty-version": "4.1.x-dev",
-            "alias-version": "4.1.9999999.9999999-dev"
         },
         {
             "package": "swiftmailer/swiftmailer",
