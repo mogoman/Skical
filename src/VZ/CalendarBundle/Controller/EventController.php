@@ -18,7 +18,7 @@ use VZ\CalendarBundle\Form\EventType;
  * edit:   edit existing event
  * delete: delete an event
  *
- * @Route("/event")
+ * @Route("/admin/event")
  */
 class EventController extends Controller
 {
@@ -162,5 +162,21 @@ class EventController extends Controller
             throw $this->createNotFoundException('event_notfound');
         }
         // delete this event @TODO
+    }
+    /**
+     * Add users to event
+     *
+     * @Route("/{id}/addattendee", name="vz_calendar_event_addattendee")
+     * @Template()
+     */
+    public function addAttendeeAction(Request $request, $id)
+    {
+        $em    = $this->getDoctrine()->getManager();
+
+        $event = $em->getRepository('VZCalendarBundle:Event')->find($id);
+
+        if (!$event) {
+            throw $this->createNotFoundException('event_notfound');
+        }
     }
 }
