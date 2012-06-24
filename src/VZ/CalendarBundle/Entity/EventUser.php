@@ -25,7 +25,7 @@ class EventUser
 
     /**
      * @ORM\ManyToOne(targetEntity="Event", inversedBy="attendees")
-     * @ORM\JoinColumn(name="event_user_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="event_id", referencedColumnName="id")
      * @var type
      */
     private $event;

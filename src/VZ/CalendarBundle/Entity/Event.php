@@ -376,7 +376,11 @@ class Event
      */
     public function addEventUser(\VZ\CalendarBundle\Entity\EventUser $attendees)
     {
+        if ($this->totalSlots - $this->usedSlots - $attendees->getReservedSlots() < 0) {
+            return false;
+        }
         $this->attendees[] = $attendees;
+        $this->usedSlots  += $attendees->getReservedSlots();
         return $this;
     }
 
@@ -393,18 +397,34 @@ class Event
     /**
      * Check if given user is attending this event
      *
-     * @param int $userId the user id to check (usually the currently logged in user)
+     * @param User $user user object from logged in or other user (NOT EventUser Object)
      * @return true if the given user is attending, false if not
      */
-    public function checkUser($userId)
+    public function checkAttendee($user)
     {
-        // can't accept null or anything else stupid
-        if (!is_int($userId)) {
-            return false;
-        }
         // run through linked records and check if any match given user
         foreach ($this->attendees as $attendee) {
-            if ($attendee->getUserid() == $userId) {
+            if ($attendee->getUser()->getId() == $user->getId()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Remove an attendee from this event
+     *
+     * @param User $user user object from logged in or other user (NOT EventUser Object)
+     * @return bool true if the user was found and removed, else false
+     */
+    public function removeAttendee($user)
+    {
+        foreach ($this->attendees as $attendee) {
+            if ($attendee->getUser()->getId() == $user->getId()) {
+                $usedSlots = $this->usedSlots - $attendee->getReservedSlots();
+                $this->setUsedSlots($usedSlots);
+
+                $this->attendees->removeElement($attendee);
                 return true;
             }
         }

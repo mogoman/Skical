@@ -8,13 +8,14 @@
       <h1>{{ "next_event" | trans() }} {{ events.0.startDate|date('d.m.Y') }}</h1>
       <h2>{{ events.0.summary }} {{ events.0.startTime|date('H:i') }}</h2>
       <p>{{ events.0.details }}</p>
+      <p>{{ events.0.totalSlots - events.0.usedSlots }}</p>
       <p>
-    {% if app.user and events.0.checkUser(app.user.id) %}
-        <a class="btn btn-primary btn-large">
+    {% if app.user and events.0.checkAttendee(app.user) %}
+        <a class="btn btn-primary btn-large" href="{{ path("vz_calendar_eventuser_delete", { 'eventId': events.0.id }) }}">
             {{ "unsign_up" | trans() }}
         </a>
     {% elseif app.user %}
-          <a class="btn btn-primary btn-large">
+          <a class="btn btn-primary btn-large" href="{{ path("vz_calendar_eventuser_create", { 'eventId': events.0.id }) }}">
 
               {{ "sign_up" | trans() }}
           </a>
@@ -27,6 +28,7 @@
             <tr>
                 <th>{{ "event_summary" | trans() }}</th>
                 <th>{{ "event_start" | trans() }}</th>
+                <th>{{ "free_slots" | trans() }}</th>
                 <th>{{ "event_actions" | trans() }}</th>
             </tr>
         </thead>
@@ -38,13 +40,14 @@
         <tr>
             <td>{{ event.summary }}</td>
             <td>{{ event.startDate|date('d.m.Y') }} {{ event.startTime|date('H:i') }}</td>
+            <td>{{ event.totalSlots - event.usedSlots }}</td>
             <td>
-                {% if app.user and events.0.checkUser(app.user.id) %}
-                <a class="btn btn-primary" href="{{ path("vz_calendar_attendance_join", { 'event_id': event.id }) }}">
+                {% if app.user and event.checkAttendee(app.user) %}
+                <a class="btn btn-primary" href="{{ path("vz_calendar_eventuser_delete", { 'eventId': event.id }) }}">
                     {{ "unsign_up" | trans() }}
                 </a>
                 {% elseif app.user %}
-                <a class="btn btn-primary" href="{{ path("vz_calendar_attendance_leave", { 'event_id': event.id }) }}">
+                <a class="btn btn-primary" href="{{ path("vz_calendar_eventuser_create", { 'eventId': event.id }) }}">
                     {{ "sign_up" | trans() }}
                 </a>
                 {% endif %}
