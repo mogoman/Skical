@@ -21,6 +21,13 @@ class IndexController extends Controller
      */
     public function indexAction(Request $request)
     {
-        return array();
+        $em     = $this->getDoctrine()->getManager();
+
+        // $events = $em->getRepository('VZCalendarBundle:Event')->findAllCurrent(); @TODO
+        $events = $em->getRepository('VZCalendarBundle:Event')->findAll();
+
+        return array(
+            'events' => $events
+        );
     }
 }

@@ -389,4 +389,25 @@ class Event
     {
         return $this->attendees;
     }
+
+    /**
+     * Check if given user is attending this event
+     *
+     * @param int $userId the user id to check (usually the currently logged in user)
+     * @return true if the given user is attending, false if not
+     */
+    public function checkUser($userId)
+    {
+        // can't accept null or anything else stupid
+        if (!is_int($userId)) {
+            return false;
+        }
+        // run through linked records and check if any match given user
+        foreach ($this->attendees as $attendee) {
+            if ($attendee->getUserid() == $userId) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

@@ -2,11 +2,43 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" datatype="plaintext" original="" >
         <body>
-            <trans-unit id="security.login.username">
-                <source>security.login.username</source>
-                <target>Username or Email</target>
+            <!-- event page -->
+            <trans-unit id="event_create_new">
+                <source>event_create_new</source>
+                <target>Create</target>
             </trans-unit>
+            <trans-unit id="event_form_details">
+                <source>event_form_details</source>
+                <target>Details</target>
+            </trans-unit>
+            <trans-unit id="event_summary">
+                <source>event_summary</source>
+                <target>Summary</target>
+            </trans-unit>
+            <trans-unit id="event_start">
+                <source>event_start</source>
+                <target>Meeting time</target>
+            </trans-unit>
+            <trans-unit id="event_actions">
+                <source>event_actions</source>
+                <target>Actions</target>
+            </trans-unit>
+            <trans-unit id="event_edit">
+                <source>event_edit</source>
+                <target>Edit</target>
+            </trans-unit>
+            <trans-unit id="event_delete">
+                <source>event_delete</source>
+                <target>Delete</target>
+            </trans-unit>
+
+
+            <!-- errors / warnings -->
+            <trans-unit id="event_notfound">
+                <source>event_notfound</source>
+                <target>That event was not found</target>
+            </trans-unit>
+
         </body>
     </file>
 </xliff>
-

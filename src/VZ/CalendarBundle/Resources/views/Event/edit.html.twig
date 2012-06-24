@@ -1,0 +1,19 @@
+{% extends "VZCalendarBundle::layout.html.twig" %}
+
+{% block content %}
+
+<h2>{{ "event_edit" | trans() }}</h2>
+<form action="{{ path('vz_calendar_event_update', { 'id': event.id }) }}" method="post" {{ form_enctype(form) }}>
+    {% include "VZCalendarBundle:Event:_eventform.html.twig" with {'form': form } %}
+
+    <button type="submit" class="btn btn-primary">{{ "submit" | trans() }}</button>
+    <a class="btn" href="{{ path("vz_calendar_event_index") }}">
+        {{ "back_to_list" | trans() }}
+    </a>
+
+    <a class="btn btn-danger" href="{{ path("vz_calendar_event_delete", { 'id': event.id }) }}">
+        {{ "event_delete" | trans() }}
+    </a>
+</form>
+
+{% endblock %} 
