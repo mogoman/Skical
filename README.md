@@ -45,11 +45,17 @@ for the promote part, use the role
 
     ROLE_ADMIN
 
-### 6) point your webserver at the web/ directory and restart
+### 6) allow access to development environment
 
 Edit the following file and add the IP address of the box where your browser runs
 
     web/app_dev.php
+
+### 7) point your webserver at the web/ directory and restart
+
+### 8) open up the development URL on your web server
+
+    http://<your server>/app_dev.php
 
 
 Done
