@@ -23,8 +23,7 @@ class IndexController extends Controller
     {
         $em     = $this->getDoctrine()->getManager();
 
-        // $events = $em->getRepository('VZCalendarBundle:Event')->findAllCurrent(); @TODO
-        $events = $em->getRepository('VZCalendarBundle:Event')->findAll();
+        $events = $em->getRepository('VZCalendarBundle:Event')->findAllCurrent();
 
         return array(
             'events' => $events

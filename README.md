@@ -51,11 +51,13 @@ Edit the following file and add the IP address of the box where your browser run
 
     web/app_dev.php
 
+
 Done
 ----
 - sign up / sign away attendance process is now working
 - amount of free slot checking in place
 - object maintains own free slot checks
+- added admin security
 
 Todo list
 ---------

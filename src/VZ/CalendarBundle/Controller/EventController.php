@@ -33,7 +33,7 @@ class EventController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $events  = $em->getRepository('VZCalendarBundle:Event')
-            ->findAll();
+            ->findAllCurrent();
 
         return array(
             'events' => $events

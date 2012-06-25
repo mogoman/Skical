@@ -1,47 +1,47 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Calendar</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
-        <meta name="author" content="">
+<head>
+    <meta charset="utf-8">
+    <title>Calendar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-        {% block stylesheets %}
-            {% stylesheets
+    {% block stylesheets %}
+    {% stylesheets
                 '@VZCalendarBundle/Resources/public/css/bootstrap.css'
                 '@VZCalendarBundle/Resources/public/css/bootstrap-responsive.css'
                 '@VZCalendarBundle/Resources/public/css/calendar.css'
                 output='assetic/*.css'
             %}
-                <link rel="stylesheet" href="{{ asset_url }}" />
-            {% endstylesheets %}
-        {% endblock %}
-    </head>
-    <body>
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+    {% endblock %}
+</head>
+<body>
 
-    <div class="container">
-        <header class="jumbotron masthead">
-          <div class="inner">
-            <h1>Booking system</h1>
-            <p>Manage your bookings.</p>
-          </div>
-        </header>
+<div class="container">
+    <div class="row">
+        <div class="span12">
+            <h1>{{ 'login'|trans() }}</h1>
             {% block content %}{% endblock %}
-      <hr>
+        </div>
+    </div>
 
-      <footer>
+    <hr>
+
+    <footer>
         <p>Vanzoo 2012</p>
-      </footer>
+    </footer>
 
-    </div> <!-- /container -->
+</div> <!-- /container -->
 
-    {% block javascripts %}
-        {% javascripts
+{% block javascripts %}
+{% javascripts
             '@VZCalendarBundle/Resources/public/js/*'  output='assetic/*.js'
         %}
-        <script type="text/javascript" src="{{ asset_url }}"></script>
-        {% endjavascripts %}
-    {% endblock %}
-    </body>
+<script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+{% endblock %}
+</body>
 </html>

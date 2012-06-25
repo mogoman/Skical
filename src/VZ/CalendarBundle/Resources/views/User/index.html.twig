@@ -1,0 +1,33 @@
+{% extends "VZCalendarBundle::layout.html.twig" %}
+
+{% block content %}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>{{ "firstname" | trans() }}</th>
+            <th>{{ "lastname" | trans() }}</th>
+            <th>{{ "enabled" | trans() }}</th>
+            <th>{{ "email" | trans() }}</th>
+            <th>{{ "is_member" | trans() }}</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for user in users %}
+    <tr>
+        <td>{{ user.firstName }}</td>
+        <td>{{ user.lastName }}</td>
+        <td>{{ user.enabled ? 'yes'|trans() : 'no'|trans() }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.isMember ? 'yes'|trans() : 'no'|trans() }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
+
+
+
+
+
