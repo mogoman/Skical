@@ -13,3 +13,7 @@ app/config/parameters.ini
 
 # IDE
 .idea
+
+# other
+rsync_dev.php
+rsync_exclude.txt
