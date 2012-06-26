@@ -63,7 +63,19 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: VZ\CalendarBundle\Entity\User
-
+#    service:
+#        mailer: fos_user.mailer.twig_swift
+    registration:
+        confirmation:
+            enabled:    true
+#        email:
+#            template: VZCalendar:User:registration.email.twig
+    from_email:
+        address:        noreply@munichskiclub.com
+        sender_name:    Munich International Ski Club
+#    resetting:
+#        email:
+#            template: VZCalendar:User:resetting.email.twig
 knp_menu:
     twig:
         template: knp_menu.html.twig

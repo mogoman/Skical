@@ -1,6 +1,7 @@
 {% extends 'VZCalendarBundle::login.html.twig' %}
 
 {% block content %}
+<h1>{{ 'login'|trans() }}</h1>
 {% if error %}
 <div>{{ error|trans({}, 'FOSUserBundle') }}</div>
 {% endif %}
@@ -21,4 +22,6 @@
         {{ 'Login'|trans() }}
     </button>
 </form>
+<a class="btn btn-primary" href="{{ path('fos_user_registration_register') }}">{{ 'register' | trans() }}</a>
+<a class="btn btn-warning" href="{{ path('fos_user_resetting_request') }}">{{ 'lost_password' | trans() }}</a>
 {% endblock %}
