@@ -51,12 +51,24 @@ Edit the following file and add the IP address of the box where your browser run
 
     web/app_dev.php
 
+### 7) change the log and cache directories to allow the web user (normally www) to write to them
+
+    sudo rm -rf app/cache/* app/logs/*
+    sudo chown www app/logs/ app/cache/
+    mkdir web/assetic
+    sudo chown www web/assetic
+
+### 8) clear the cache as the web user
+
+    sudo -u www app/console cache:clear
+
 ### 7) point your webserver at the web/ directory and restart
 
 ### 8) open up the development URL on your web server
 
     http://<your server>/app_dev.php
 
+### 9) login and create yourself an event or two
 
 Done
 ----
