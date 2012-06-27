@@ -70,15 +70,34 @@ Edit the following file and add the IP address of the box where your browser run
 
 ### 9) login and create yourself an event or two
 
-Done
-----
+How to setup server for production mode
+---------------------------------------
+
+### 1) Create the web/assetic directory owned by the web user (www)
+
+    mkdir web/assetic
+    sudo chown www web/assetic
+
+### 2) Deploy assets
+
+    sudo -u www app/console assetic:dump --env=prod
+
+### 3) Clear the production cache
+
+    sudo -u www app/console cache:clear --env=prod
+
+
+Todo list completed
+-------------------
+
 - sign up / sign away attendance process is now working
 - amount of free slot checking in place
 - object maintains own free slot checks
 - added admin security
 
-Todo list
----------
+Todo list still to do
+---------------------
+
 - add constraints to signup (max 5 etc)
 - setup roles for admin and backend users
 - setup configuration for sign on, lost password etc. process
