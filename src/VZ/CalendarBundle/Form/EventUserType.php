@@ -11,10 +11,16 @@ class EventUserType extends AbstractType
     {
         $builder
             ->add(
-                'reservedSlots'
+                'reservedSlots', 'choice', array(
+                    'choices'   => array('1' => '1', '2' => '2', '3' => '3', '4' => '4', '5' => '5'),
+                    'required'  => true,
+                )
             )
-            ->add('paymentMethod')
-            ->add('status')
+            ->add('paymentMethod', 'choice', array(
+                    'choices'   => array('onbus' => 'On Bus', 'transfer' => 'Bank Transfer'),
+                    'required'  => true,
+                )
+            )
         ;
     }
     public function getName()

@@ -5,10 +5,16 @@
 {% if events|length > 0 %}
     {# display event number 1 as a hero and the rest as lists #}
     <div class="hero-unit">
-      <h1>{{ "next_event" | trans() }} {{ events.0.startDate|date('d.m.Y') }}</h1>
-      <h2>{{ events.0.summary }} {{ events.0.startTime|date('H:i') }}</h2>
+      <h1>{{ "next_event" | trans({}, 'VZCalendarBundle') }} {{ events.0.startDate|date('d.m.Y') }}</h1>
+      <h2>{{ events.0.summary }} {{ 'meeting_at' | trans() }} {{ events.0.startTime|date('H:i') }}</h2>
       <p>{{ events.0.details }}</p>
-      <p>{{ events.0.totalSlots - events.0.usedSlots }}</p>
+      <p>
+          {% if events.0.openSlots > 0 %}
+          {{ events.0.openSlots }}
+          {% else %}
+          {{ 'event_full' | trans() }}
+          {% endif %}
+      </p>
       <p>
     {% if app.user and events.0.checkAttendee(app.user) %}
         <a class="btn btn-primary btn-large" href="{{ path("vz_calendar_eventuser_delete", { 'eventId': events.0.id }) }}">

@@ -430,4 +430,14 @@ class Event
         }
         return false;
     }
+
+    /**
+     * Work out how many slots are available and return the amount
+     *
+     * @return int number of slots open
+     */
+    public function getOpenSlots()
+    {
+        return $this->totalSlots - $this->usedSlots;
+    }
 }

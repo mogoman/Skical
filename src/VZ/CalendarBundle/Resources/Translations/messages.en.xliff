@@ -40,6 +40,22 @@
                 <target>Booking System</target>
             </trans-unit>
 
+            <trans-unit id="next_event">
+                <source>next_event</source>
+                <target>Next Event</target>
+            </trans-unit>
+            <trans-unit id="sign_up">
+                <source>sign_up</source>
+                <target>Sign Up</target>
+            </trans-unit>
+            <trans-unit id="unsign_up">
+                <source>unsign_up</source>
+                <target>Cancel attendance</target>
+            </trans-unit>
+            <trans-unit id="event_full">
+                <source>event_full</source>
+                <target>This event is now full</target>
+            </trans-unit>
 
             <!-- errors / warnings -->
             <trans-unit id="event_notfound">

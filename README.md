@@ -11,6 +11,8 @@ How To install
 
     git clone git@github.com:mogoman/Skical.git skical
 
+### The rest of the steps require you to be in the directory you clone to - so cd skical if you used skical
+
 ### 2) install composer
 
     curl -s http://getcomposer.org/installer | php
@@ -94,11 +96,12 @@ Todo list completed
 - amount of free slot checking in place
 - object maintains own free slot checks
 - added admin security
+- add constraints to signup (max 5 and payment "on bus" and "transfer")
+- setup configuration for sign on, lost password etc. process
+- setup project on hosted server for demoing
+- setup roles for admin and backend users
 
 Todo list still to do
 ---------------------
 
-- add constraints to signup (max 5 etc)
-- setup roles for admin and backend users
-- setup configuration for sign on, lost password etc. process
-- setup project on hosted server for demoing
+
