@@ -56,6 +56,11 @@
                 <source>event_full</source>
                 <target>This event is now full</target>
             </trans-unit>
+            <trans-unit id="meeting_at">
+                <source>meeting_at</source>
+                <target>Meeting time is </target>
+            </trans-unit>
+
 
             <!-- errors / warnings -->
             <trans-unit id="event_notfound">
