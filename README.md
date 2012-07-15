@@ -103,5 +103,12 @@ Todo list completed
 
 Todo list still to do
 ---------------------
+- allow admin user to be able to add other users to events
+- allow admin user to actually be able to edit other users
+- finish off translations
+- change start / end dates to javascript-based datepicker
+- write job control to be able to auto email on quotas etc
+- change schema to set cutoff date for people signing up to an event
+- change user profile editor to include first / last names
 
 
