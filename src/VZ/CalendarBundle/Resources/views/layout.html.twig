@@ -9,8 +9,8 @@
 
         {% block stylesheets %}
             {% stylesheets
-                '@VZCalendarBundle/Resources/public/css/bootstrap.css'
-                '@VZCalendarBundle/Resources/public/css/bootstrap-responsive.css'
+                '%kernel.root_dir%/../vendor/twitter/bootstrap/docs/assets/css/bootstrap.css'
+                '%kernel.root_dir%/../vendor/twitter/bootstrap/docs/assets/css/bootstrap-responsive.css'
                 '@VZCalendarBundle/Resources/public/css/calendar.css'
                 output='assetic/*.css'
             %}
@@ -57,6 +57,7 @@
 
     {% block javascripts %}
         {% javascripts
+            '%kernel.root_dir%/../vendor/jquery/jquery/jquery-1.7.2.min.js'
             '@VZCalendarBundle/Resources/public/js/*'  output='assetic/*.js'
         %}
         <script type="text/javascript" src="{{ asset_url }}"></script>

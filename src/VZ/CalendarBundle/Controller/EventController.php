@@ -7,9 +7,12 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\FormError;
 
 use VZ\CalendarBundle\Entity\Event;
+use VZ\CalendarBundle\Entity\EventUser;
 use VZ\CalendarBundle\Form\EventType;
+use VZ\CalendarBundle\Form\AdminEventUserType;
 
 /**
  * Calendar controller - all event views and control
@@ -164,7 +167,7 @@ class EventController extends Controller
         // delete this event @TODO
     }
     /**
-     * Add users to event
+     * Add users to event step #1 present a list of users to add to the event
      *
      * @Route("/{id}/addattendee", name="vz_calendar_event_addattendee")
      * @Template()
@@ -178,5 +181,45 @@ class EventController extends Controller
         if (!$event) {
             throw $this->createNotFoundException('event_notfound');
         }
+        $eventUser = new EventUser();
+        $eventUser->setEvent($event);
+
+        $form = $this->createForm(new AdminEventUserType($event), $eventUser);
+
+        if ($request->getMethod() == 'POST') {
+            $form->bindRequest($request);
+
+            $saveValid = true;
+
+            if ($form->isValid()) {
+                // add user to event
+                if ($event->addEventUser($eventUser) === false) {
+                    $saveValid = false;
+                    // set form error
+                    $form->addError(new FormError('not_enough_free_slots'));
+                }
+            }
+
+            if ($saveValid) {
+                $em = $this->getDoctrine()->getManager();
+
+                // setup the link to the event
+                $eventUser->setEvent($event);
+
+                // setup the link to the user (note we are forcing here, for security reasons)
+                $eventUser->setUser($form->get('user')->getData());
+
+                // persist and save to the database
+                $em->persist($eventUser);
+                $em->flush();
+
+                return $this->redirect($this->generateUrl('vz_calendar_event_index'));
+            }
+        }
+
+        return array(
+            'event'       => $event,
+            'form'        => $form->createView()
+        );
     }
 }

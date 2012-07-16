@@ -100,10 +100,11 @@ Todo list completed
 - setup configuration for sign on, lost password etc. process
 - setup project on hosted server for demoing
 - setup roles for admin and backend users
+- allow admin user to be able to add other users to events
+- add twitter bootstrap and jquery to composer and change code references
 
 Todo list still to do
 ---------------------
-- allow admin user to be able to add other users to events
 - allow admin user to actually be able to edit other users
 - finish off translations
 - change start / end dates to javascript-based datepicker

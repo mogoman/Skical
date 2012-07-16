@@ -38,6 +38,7 @@ class EventUserController extends Controller
 
         $eventUser = new EventUser();
         $eventUser->setEvent($event);
+        $eventUser->setUser($this->get('security.context')->getToken()->getUser());
 
         $form = $this->createForm(new EventUserType(), $eventUser);
 
@@ -64,6 +65,7 @@ class EventUserController extends Controller
         }
 
         $eventUser = new EventUser();
+        $eventUser->setUser($this->get('security.context')->getToken()->getUser());
 
         $form = $this->createForm(new EventUserType(), $eventUser);
 
@@ -88,7 +90,7 @@ class EventUserController extends Controller
                 // setup the link to the event
                 $eventUser->setEvent($event);
 
-                // setup the link to the user
+                // setup the link to the user (note we are forcing here, for security reasons)
                 $eventUser->setUser($this->get('security.context')->getToken()->getUser());
 
                 // persist and save to the database
