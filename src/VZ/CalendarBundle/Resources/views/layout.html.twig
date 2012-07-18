@@ -11,6 +11,8 @@
             {% stylesheets
                 '%kernel.root_dir%/../vendor/twitter/bootstrap/docs/assets/css/bootstrap.css'
                 '%kernel.root_dir%/../vendor/twitter/bootstrap/docs/assets/css/bootstrap-responsive.css'
+                '%kernel.root_dir%/../web/css/jquery-ui-1.8.16.custom.css'
+                '%kernel.root_dir%/../web/css/jquery.ui.1.8.16.ie.css'
                 '@VZCalendarBundle/Resources/public/css/calendar.css'
                 output='assetic/*.css'
             %}
@@ -50,7 +52,7 @@
       <hr>
 
       <footer>
-        <p>Vanzoo 2012</p>
+          <p>Vanzoo 2012 :: Version 0.7.18</p>
       </footer>
 
     </div> <!-- /container -->
@@ -58,10 +60,17 @@
     {% block javascripts %}
         {% javascripts
             '%kernel.root_dir%/../vendor/jquery/jquery/jquery-1.7.2.min.js'
+            '%kernel.root_dir%/../vendor/jquery/jquery-ui/jquery-ui.js'
+            '%kernel.root_dir%/../vendor/jquery/jquery-ui/jquery.ui.datepicker-de.js'
             '@VZCalendarBundle/Resources/public/js/*'  output='assetic/*.js'
         %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
         {% endjavascripts %}
+    <script type="text/javascript">
+        $(function() {
+            $('.date').datepicker({ dateFormat: 'dd.mm.yy', minDate: "+1D", maxDate: "+1Y" })
+        });
+    </script>
     {% endblock %}
     </body>
 </html>

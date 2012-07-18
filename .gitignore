@@ -15,5 +15,5 @@ app/config/parameters.ini
 .idea
 
 # other
-rsync_dev.php
+rsync_dev.sh
 rsync_exclude.txt

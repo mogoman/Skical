@@ -91,7 +91,15 @@ How to setup server for production mode
 
 Todo list completed
 -------------------
+version 0.7.18
+--------------
+- change start / end dates to javascript-based datepicker
+- change schema to set cutoff date for people signing up to an event
+- change user profile editor to include first / last names
+- allow admin user to actually be able to edit other users
 
+pre 0.7.18
+----------
 - sign up / sign away attendance process is now working
 - amount of free slot checking in place
 - object maintains own free slot checks
@@ -105,11 +113,7 @@ Todo list completed
 
 Todo list still to do
 ---------------------
-- allow admin user to actually be able to edit other users
-- finish off translations
-- change start / end dates to javascript-based datepicker
 - write job control to be able to auto email on quotas etc
-- change schema to set cutoff date for people signing up to an event
-- change user profile editor to include first / last names
-
-
+- create view of who is attending and controls to remove people from events
+- add logging
+- finish off translations

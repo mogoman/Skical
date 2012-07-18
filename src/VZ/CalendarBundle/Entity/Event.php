@@ -28,14 +28,24 @@ class Event
     public $startTime;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", nullable=true)
      */
     public $endDate;
 
     /**
-     * @ORM\Column(type="time")
+     * @ORM\Column(type="time", nullable=true)
      */
     public $endTime;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    public $cutoffDate;
+
+    /**
+     * @ORM\Column(type="time")
+     */
+    public $cutoffTime;
 
     /**
      *
@@ -439,5 +449,61 @@ class Event
     public function getOpenSlots()
     {
         return $this->totalSlots - $this->usedSlots;
+    }
+
+    /**
+     * Set cutoffDate
+     *
+     * @param date $cutoffDate
+     * @return Event
+     */
+    public function setCutoffDate($cutoffDate)
+    {
+        $this->cutoffDate = $cutoffDate;
+        return $this;
+    }
+
+    /**
+     * Get cutoffDate
+     *
+     * @return date 
+     */
+    public function getCutoffDate()
+    {
+        return $this->cutoffDate;
+    }
+
+    /**
+     * Set cutoffTime
+     *
+     * @param time $cutoffTime
+     * @return Event
+     */
+    public function setCutoffTime($cutoffTime)
+    {
+        $this->cutoffTime = $cutoffTime;
+        return $this;
+    }
+
+    /**
+     * Get cutoffTime
+     *
+     * @return time 
+     */
+    public function getCutoffTime()
+    {
+        return $this->cutoffTime;
+    }
+
+    /**
+     * Add attendees
+     *
+     * @param VZ\CalendarBundle\Entity\EventUser $attendees
+     * @return Event
+     */
+    public function addAttendee(\VZ\CalendarBundle\Entity\EventUser $attendees)
+    {
+        $this->attendees[] = $attendees;
+        return $this;
     }
 }

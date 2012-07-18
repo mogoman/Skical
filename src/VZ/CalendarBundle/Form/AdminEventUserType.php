@@ -32,7 +32,7 @@ class AdminEventUserType extends EventUserType
                 'user',
                 'entity',
                 array(
-                    'class' => 'VZCalendarBundle:User',
+                    'class' => 'VZ\CalendarBundle\Entity\User',
                     'query_builder' => function(EntityRepository $er) use ($skipIds) {
                         $qb = $er->createQueryBuilder('u');
                         if (count($skipIds) > 0) {

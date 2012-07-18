@@ -10,6 +10,7 @@
             <th>{{ "enabled" | trans() }}</th>
             <th>{{ "email" | trans() }}</th>
             <th>{{ "is_member" | trans() }}</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -20,6 +21,17 @@
         <td>{{ user.enabled ? 'yes'|trans() : 'no'|trans() }}</td>
         <td>{{ user.email }}</td>
         <td>{{ user.isMember ? 'yes'|trans() : 'no'|trans() }}</td>
+        <td>
+            <a href="{{ path("vz_calendar_user_edit", { 'id': user.id }) }}" class="btn">{{ 'edit' | trans() }}</a>
+            {# add disable button to quickly disable a user - but only if they are enabled and of course
+               you can't disable yourself (app.user.id is the currently logged in user)
+            #}
+            {% if user.isEnabled and user.id != app.user.id %}
+            <a class="btn btn-danger" href="{{ path("vz_calendar_user_disable", { 'id': user.id }) }}">
+                {{ "user_disable" | trans() }}
+            </a>
+            {% endif %}
+        </td>
     </tr>
     {% endfor %}
     </tbody>

@@ -167,4 +167,13 @@ class EventUser
     {
         return $this->status;
     }
+
+    /**
+     * return a string representation of this class
+     */
+    public function __toString()
+    {
+        $userName = $this->getUser()->getFirstName();
+        return $userName;
+    }
 }

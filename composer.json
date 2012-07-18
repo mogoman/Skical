@@ -21,7 +21,9 @@
         "friendsofsymfony/user-bundle": "*",
         "knplabs/knp-menu-bundle": "1.1.0",
         "twitter/bootstrap": "dev-master",
-        "jquery/jquery": "1.7.2"
+        "jquery/jquery": "1.7.2",
+        "jquery/jquery-ui": "1.8.21",
+        "jquery/jquery-ui-datepicker-de": "1.8.21"
     },
     "scripts": {
         "post-install-cmd": [
@@ -62,6 +64,28 @@
                 "version": "1.7.2",
                 "dist": {
                     "url": "http://code.jquery.com/jquery-1.7.2.min.js",
+                    "type": "file"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "jquery/jquery-ui",
+                "version": "1.8.21",
+                "dist": {
+                    "url": "http://code.jquery.com/ui/1.8.21/jquery-ui.js",
+                    "type": "file"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "jquery/jquery-ui-datepicker-de",
+                "version": "1.8.21",
+                "dist": {
+                    "url": "http://jquery-ui.googlecode.com/svn/trunk/ui/i18n/jquery.ui.datepicker-de.js",
                     "type": "file"
                 }
             }

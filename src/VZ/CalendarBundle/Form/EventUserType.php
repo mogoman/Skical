@@ -25,6 +25,6 @@ class EventUserType extends AbstractType
     }
     public function getName()
     {
-        return 'event';
+        return 'eventuser';
     }
 }

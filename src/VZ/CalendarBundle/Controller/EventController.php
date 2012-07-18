@@ -222,4 +222,24 @@ class EventController extends Controller
             'form'        => $form->createView()
         );
     }
+    /**
+     * View event. Show all event details as well as a list of people who are
+     * attending. Also create controls to remove people from the event
+     *
+     * @Route("/{id}/view", name="vz_calendar_event_view")
+     * @Template()
+     */
+    public function viewAction(Request $request, $id)
+    {
+        $em    = $this->getDoctrine()->getManager();
+
+        $event = $em->getRepository('VZCalendarBundle:Event')->find($id);
+
+        if (!$event) {
+            throw $this->createNotFoundException('event_notfound');
+        }
+        return array(
+            'event' => $event
+        );
+    }
 }

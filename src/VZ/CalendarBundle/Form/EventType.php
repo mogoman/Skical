@@ -7,6 +7,12 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 class EventType extends AbstractType
 {
+    /**
+     * Builds the form for an Event (for adding or editing an event)
+     *
+     * @param \Symfony\Component\Form\FormBuilderInterface $builder
+     * @param array $options
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -20,15 +26,39 @@ class EventType extends AbstractType
                     'attr' => array('class' => 'abc')
                 )
             )
-            ->add('startDate')
-            ->add('startTime')
-            ->add('endDate')
-            ->add('endTime')
+            ->add(
+                'startDate', 'date', array(
+                    'widget' => 'single_text',
+                    'format' => 'dd.MM.yyyy',
+                    'attr' => array('class' => 'date')
+                )
+            )
+            ->add('startTime', 'time', array(
+                    'widget' => 'single_text',
+                    'attr' => array('class' => 'time')
+                )
+            )
+            ->add('cutoffDate', 'date', array(
+                    'widget' => 'single_text',
+                    'format' => 'dd.MM.yyyy',
+                    'attr' => array('class' => 'date')
+                )
+            )
+            ->add('cutoffTime', 'time', array(
+                    'widget' => 'single_text',
+                    'attr' => array('class' => 'time')
+                )
+            )
             ->add('totalSlots')
             ->add('quota')
-            ->add('quotaNotifyDate')
-            ->add('priceMember')
-            ->add('priceNonMember')
+            ->add('quotaNotifyDate', 'date', array(
+                    'widget' => 'single_text',
+                    'format' => 'dd.MM.yyyy',
+                    'attr' => array('class' => 'date')
+                )
+            )
+            ->add('priceMember', 'integer')
+            ->add('priceNonMember', 'integer')
         ;
     }
     public function getName()

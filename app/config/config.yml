@@ -1,6 +1,7 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
+    - { resource: @VZCalendarBundle/Resources/config/services.yml }
 
 framework:
     #esi:             ~
@@ -74,6 +75,9 @@ fos_user:
     from_email:
         address:        noreply@munichskiclub.com
         sender_name:    Munich International Ski Club
+    profile:
+        form:
+            type: vz_user_profile
 #    resetting:
 #        email:
 #            template: VZCalendar:User:resetting.email.twig

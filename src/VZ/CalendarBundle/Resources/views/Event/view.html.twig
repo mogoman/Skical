@@ -1,0 +1,29 @@
+{% extends "VZCalendarBundle::layout.html.twig" %}
+
+{% block content %}
+
+<div class="hero-unit">
+    <h1>{{ "next_event" | trans() }} {{ event.startDate|date('d.m.Y') }}</h1>
+    <h2>{{ event.summary }} {{ 'meeting_at' | trans() }} {{ event.startTime|date('H:i') }}</h2>
+    <p>{{ event.details }}</p>
+    <p>
+        {% if event.openSlots > 0 %}
+        {{ event.openSlots }}
+        {% else %}
+        {{ 'event_full' | trans() }}
+        {% endif %}
+    </p>
+    <h3>Attendee list</h3>
+        {% for user in event.getAttendees %}
+        <p>
+            {{ user }} <a href="" class="btn btn-danger">{{ 'user_remove_from_event' | trans() }} </a>
+        </p>
+        {% endfor %}
+</div>
+
+{% endblock %} 
+
+
+
+
+
