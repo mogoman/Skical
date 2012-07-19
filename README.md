@@ -91,6 +91,10 @@ How to setup server for production mode
 
 Todo list completed
 -------------------
+Version 0.7.19
+--------------
+- create view of who is attending and controls to remove people from events
+
 version 0.7.18
 --------------
 - change start / end dates to javascript-based datepicker
@@ -114,6 +118,5 @@ pre 0.7.18
 Todo list still to do
 ---------------------
 - write job control to be able to auto email on quotas etc
-- create view of who is attending and controls to remove people from events
 - add logging
 - finish off translations

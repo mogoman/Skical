@@ -242,4 +242,31 @@ class EventController extends Controller
             'event' => $event
         );
     }
+    /**
+     * Remove user from an event. This is the same as what happens when the
+     * user clicks on "leave" (see vz_calendar_eventuser_delete)
+     *
+     * @Route("/{id}/deleteuser/{userId}", name="vz_calendar_event_deleteuser")
+     * @Template()
+     */
+    public function deleteuserAction(Request $request, $id, $userId)
+    {
+        $em    = $this->getDoctrine()->getManager();
+
+        $event = $em->getRepository('VZCalendarBundle:Event')->find($id);
+
+        if (!$event) {
+            throw $this->createNotFoundException('event_notfound');
+        }
+        $user  = $em->getRepository('VZCalendarBundle:User')->find($userId);
+
+        if (!$user) {
+            throw $this->createNotFoundException('user_notfound');
+        }
+
+        if ($event->removeAttendee($user)) {
+            $em->flush();
+        }
+        return $this->redirect($this->generateUrl('vz_calendar_event_view', array('id' => $event->getId())));
+    }
 }

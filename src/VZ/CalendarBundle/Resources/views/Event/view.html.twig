@@ -16,14 +16,11 @@
     <h3>Attendee list</h3>
         {% for user in event.getAttendees %}
         <p>
-            {{ user }} <a href="" class="btn btn-danger">{{ 'user_remove_from_event' | trans() }} </a>
+            {{ user }}
+            <a href="{{ path("vz_calendar_event_deleteuser", { 'id': event.id, 'userId': user.user.id } )}}"
+               class="btn btn-danger">{{ 'user_remove_from_event' | trans() }} </a>
         </p>
         {% endfor %}
 </div>
 
-{% endblock %} 
-
-
-
-
-
+{% endblock %}
