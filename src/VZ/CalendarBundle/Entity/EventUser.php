@@ -176,4 +176,13 @@ class EventUser
         $userName = $this->getUser()->getFirstName();
         return $userName;
     }
+    /**
+     * return a summary of this entry
+     * TODO this doesn't work with translations - a better way would be to do it manually in the
+     * controller, but this will do for now
+     */
+    public function getSummary()
+    {
+        return sprintf("Slots reserved: %d, payment: %s", $this->getReservedSlots(), $this->getPaymentMethod());
+    }
 }

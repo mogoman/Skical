@@ -21,4 +21,23 @@ class EventRepository extends EntityRepository
 
         return $query->getResult();
     }
+
+    /**
+     * Retrieve all events that are over quota and past the quota date
+     *
+     * @param $date set this date for testing (otherwise send time())
+     */
+    public function findAllOverQuota($date)
+    {
+        $em = $this->getEntityManager();
+
+        $query = $em->createQuery(
+            'SELECT e FROM VZCalendarBundle:Event e '
+            . 'WHERE e.quotaNotifyDate >= :date '
+            . 'AND e.usedSlots > e.quota '
+            . 'AND e.quotaNotified is null ORDER BY e.startDate'
+        )->setParameter('date', date('Y-m-d H:i:s', $date));
+
+        return $query->getResult();
+    }
 }

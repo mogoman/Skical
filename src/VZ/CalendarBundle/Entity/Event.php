@@ -95,10 +95,23 @@ class Event
     public $quotaNotifyDate;
 
     /**
+     * Flag set when the quota email has been sent
+     *
+     * @ORM\Column(type="boolean")
+     */
+    public $quotaNotified;
+
+    /**
      * @ORM\OneToMany(targetEntity="EventUser", mappedBy="event", cascade={"persist"}, orphanRemoval=true)
      * @var type
      */
     private $attendees;
+
+    /**
+     * @ORM\OneToMany(targetEntity="EventLog", mappedBy="event")
+     * @var type
+     */
+    private $logs;
 
     /**
      * Get id
@@ -505,5 +518,59 @@ class Event
     {
         $this->attendees[] = $attendees;
         return $this;
+    }
+
+    /**
+     * Set quotaNotified
+     *
+     * @param boolean $quotaNotified
+     * @return Event
+     */
+    public function setQuotaNotified($quotaNotified)
+    {
+        $this->quotaNotified = $quotaNotified;
+        return $this;
+    }
+
+    /**
+     * Get quotaNotified
+     *
+     * @return boolean 
+     */
+    public function getQuotaNotified()
+    {
+        return $this->quotaNotified;
+    }
+
+    /**
+     * Add logs
+     *
+     * @param VZ\CalendarBundle\Entity\EventLog $logs
+     * @return Event
+     */
+    public function addLog(\VZ\CalendarBundle\Entity\EventLog $logs)
+    {
+        $this->logs[] = $logs;
+        return $this;
+    }
+
+    /**
+     * Remove logs
+     *
+     * @param VZ\CalendarBundle\Entity\EventLog $logs
+     */
+    public function removeLog(\VZ\CalendarBundle\Entity\EventLog $logs)
+    {
+        $this->logs->removeElement($logs);
+    }
+
+    /**
+     * Get logs
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getLogs()
+    {
+        return $this->logs;
     }
 }

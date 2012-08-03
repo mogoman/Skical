@@ -3,6 +3,10 @@ Skical
 
 Symfony based booking calendar.
 
+Designed by Warren van der Woude
+
+License: WTFPL (http://sam.zoy.org/wtfpl/)
+
 Needs Symfony 2.1 - https://github.com/symfony/symfony-standard
 
 How To install
@@ -91,6 +95,14 @@ How to setup server for production mode
 
 Todo list completed
 -------------------
+Version 0.8.4
+--------------
+- add logging for events
+
+Version 0.7.30
+--------------
+- started on command line tools
+
 Version 0.7.19
 --------------
 - create view of who is attending and controls to remove people from events
@@ -118,5 +130,4 @@ pre 0.7.18
 Todo list still to do
 ---------------------
 - write job control to be able to auto email on quotas etc
-- add logging
 - finish off translations

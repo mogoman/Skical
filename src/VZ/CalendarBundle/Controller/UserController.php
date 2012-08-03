@@ -53,7 +53,7 @@ class UserController extends Controller
         $form = $this->createForm(new AdminUserProfileType('VZ\CalendarBundle\Entity\User'), $user);
 
         if ($request->getMethod() == 'POST') {
-            $form->bindRequest($request);
+            $form->bind($request);
 
             if ($form->isValid()) {
                 $em = $this->getDoctrine()->getManager();

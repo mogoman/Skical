@@ -11,6 +11,7 @@ use Symfony\Component\Form\FormError;
 
 use VZ\CalendarBundle\Entity\Event;
 use VZ\CalendarBundle\Entity\EventUser;
+use VZ\CalendarBundle\Entity\EventLog;
 use VZ\CalendarBundle\Form\EventType;
 use VZ\CalendarBundle\Form\AdminEventUserType;
 
@@ -74,7 +75,7 @@ class EventController extends Controller
         $form    = $this->createForm(new EventType(), $event);
 
         if ($request->getMethod() == 'POST') {
-            $form->bindRequest($request);
+            $form->bind($request);
 
             if ($form->isValid()) {
                 $em = $this->getDoctrine()->getManager();
@@ -136,7 +137,7 @@ class EventController extends Controller
         $form = $this->createForm(new EventType(), $event);
 
         if ($request->getMethod() == 'POST') {
-            $form->bindRequest($request);
+            $form->bind($request);
 
             if ($form->isValid()) {
                 $em->persist($event);
@@ -187,7 +188,7 @@ class EventController extends Controller
         $form = $this->createForm(new AdminEventUserType($event), $eventUser);
 
         if ($request->getMethod() == 'POST') {
-            $form->bindRequest($request);
+            $form->bind($request);
 
             $saveValid = true;
 
@@ -211,6 +212,17 @@ class EventController extends Controller
 
                 // persist and save to the database
                 $em->persist($eventUser);
+
+                // log this entry
+                $log = new EventLog();
+                $log->setEvent($event);
+                $log->setUser($form->get('user')->getData());
+                $log->setAction(EventLog::joinedbyadmin);
+                $log->setDetail($eventUser->getSummary());
+
+                // persist and save to the database
+                $em->persist($log);
+
                 $em->flush();
 
                 return $this->redirect($this->generateUrl('vz_calendar_event_index'));
@@ -265,6 +277,15 @@ class EventController extends Controller
         }
 
         if ($event->removeAttendee($user)) {
+            // log this entry
+            $log = new EventLog();
+            $log->setEvent($event);
+            $log->setUser($user);
+            $log->setAction(EventLog::leftbyadmin);
+
+            // persist and save to the database
+            $em->persist($log);
+
             $em->flush();
         }
         return $this->redirect($this->generateUrl('vz_calendar_event_view', array('id' => $event->getId())));

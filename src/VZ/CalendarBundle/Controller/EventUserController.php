@@ -10,6 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 
 use VZ\CalendarBundle\Entity\EventUser;
+use VZ\CalendarBundle\Entity\EventLog;
 use VZ\CalendarBundle\Form\EventUserType;
 
 /**
@@ -70,7 +71,7 @@ class EventUserController extends Controller
         $form = $this->createForm(new EventUserType(), $eventUser);
 
         if ($request->getMethod() == 'POST') {
-            $form->bindRequest($request);
+            $form->bind($request);
 
             $saveValid = true;
 
@@ -95,6 +96,18 @@ class EventUserController extends Controller
 
                 // persist and save to the database
                 $em->persist($eventUser);
+
+                // log this entry
+                $log = new EventLog();
+                $log->setEvent($event);
+                $log->setUser($this->get('security.context')->getToken()->getUser());
+                $log->setAction(EventLog::joined);
+                $log->setDetail($eventUser->getSummary());
+
+                // persist and save to the database
+                $em->persist($log);
+
+                // save all to the DB
                 $em->flush();
 
                 return $this->redirect($this->generateUrl('vz_calendar_index_index'));
@@ -123,6 +136,15 @@ class EventUserController extends Controller
         }
 
         if ($event->removeAttendee($this->get('security.context')->getToken()->getUser())) {
+            // log this entry
+            $log = new EventLog();
+            $log->setEvent($event);
+            $log->setUser($this->get('security.context')->getToken()->getUser());
+            $log->setAction(EventLog::left);
+
+            // persist and save to the database
+            $em->persist($log);
+
             $em->flush();
         }
         return $this->redirect($this->generateUrl('vz_calendar_index_index'));

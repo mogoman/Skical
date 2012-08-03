@@ -14,11 +14,17 @@
         {% endif %}
     </p>
     <h3>Attendee list</h3>
-        {% for user in event.getAttendees %}
+        {% for user in event.attendees %}
         <p>
             {{ user }}
             <a href="{{ path("vz_calendar_event_deleteuser", { 'id': event.id, 'userId': user.user.id } )}}"
                class="btn btn-danger">{{ 'user_remove_from_event' | trans() }} </a>
+        </p>
+        {% endfor %}
+    <h3>Log</h3>
+        {% for log in event.logs %}
+        <p>
+            {{ log.logDate | date('d.m.Y H:i') }} {{ log.user.firstname }} {{ log.action }} {{ log.detail }}
         </p>
         {% endfor %}
 </div>
