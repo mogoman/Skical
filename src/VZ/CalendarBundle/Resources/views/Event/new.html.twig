@@ -2,14 +2,14 @@
 
 {% block content %}
 
-<h2>{{ "event_new" | trans() }}</h2>
+<h2>{{ "event_new" | trans }}</h2>
 
 <form action="{{ path('vz_calendar_event_new') }}" method="post" {{ form_enctype(form) }}>
     {% include "VZCalendarBundle:Event:_eventform.html.twig" with {'form': form } %}
 
-    <button type="submit" class="btn btn-primary">{{ "submit" | trans() }}</button>
+    <button type="submit" class="btn btn-primary">{{ "submit" | trans }}</button>
     <a class="btn" href="{{ path("vz_calendar_event_index") }}">
-        {{ "back_to_list" | trans() }}
+        {{ "back_to_list" | trans }}
     </a>
 </form>
 

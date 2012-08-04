@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Calendar</title>
+        <title>{{ 'vz_calendar' | trans }}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="">
@@ -30,7 +30,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">{{ "vz_calendar" | trans() }}</a>
+          <a class="brand" href="#">{{ "vz_calendar" | trans }}</a>
           <div class="nav-collapse">
             {% if app.user.hasRole("ROLE_ADMIN") %}
             {{ knp_menu_render('VZCalendarBundle:Builder:adminMenu', { 'template': 'VZCalendarBundle:Index:menu.html.twig', 'currentClass': 'active' }) }}

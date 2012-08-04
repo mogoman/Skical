@@ -119,4 +119,8 @@ class User extends BaseUser
         return $this->isMember;
     }
 
+    public function __toString()
+    {
+        return $this->firstName . ' ' . $this->lastName . ' (' . $this->email . ')';
+    }
 }

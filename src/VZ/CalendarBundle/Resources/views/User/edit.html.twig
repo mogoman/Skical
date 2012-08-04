@@ -2,19 +2,19 @@
 
 {% block content %}
 
-<h2>{{ "user_edit" | trans() }}</h2>
+<h2>{{ "user_edit" | trans }}</h2>
 <form action="{{ path('vz_calendar_user_edit', { 'id': user.id }) }}" method="post" {{ form_enctype(form) }}>
     {% include "VZCalendarBundle:User:_userprofileform.html.twig" with {'form': form } %}
 
-    <button type="submit" class="btn btn-primary">{{ "submit" | trans() }}</button>
+    <button type="submit" class="btn btn-primary">{{ "submit" | trans }}</button>
     <a class="btn" href="{{ path("vz_calendar_user_index") }}">
-        {{ "back_to_list" | trans() }}
+        {{ "back_to_list" | trans }}
     </a>
 
     {% if 1 == 2 %}
     {# better not to delete users, but just set them to disabled #}
     <a class="btn btn-danger" href="{{ path("vz_calendar_user_delete", { 'id': user.id }) }}">
-        {{ "user_delete" | trans() }}
+        {{ "user_delete" | trans }}
     </a>
     {% endif %}
 </form>

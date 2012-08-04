@@ -5,7 +5,7 @@
 {% if events|length > 0 %}
     {# display event number 1 as a hero and the rest as lists #}
     <div class="hero-unit">
-      <h1>{{ "next_event" | trans() }} {{ events.0.startDate|date('d.m.Y') }}</h1>
+      <h1>{{ "next_event" | trans({'%date%': events.0.startDate|date('d.m.Y')}) }}</h1>
       <h2>{{ events.0.summary }} {{ 'meeting_at' | trans({'%time%': events.0.startTime|date('H:i') }) }}</h2>
       <p>{{ events.0.details }}</p>
       <p>
@@ -14,12 +14,12 @@
       <p>
     {% if app.user and events.0.checkAttendee(app.user) %}
         <a class="btn btn-danger btn-large" href="{{ path("vz_calendar_eventuser_delete", { 'eventId': events.0.id }) }}">
-            {{ "unsign_up" | trans() }}
+            {{ "unsign_up" | trans }}
         </a>
     {% elseif app.user %}
           <a class="btn btn-primary btn-large" href="{{ path("vz_calendar_eventuser_create", { 'eventId': events.0.id }) }}">
 
-              {{ "sign_up" | trans() }}
+              {{ "sign_up" | trans }}
           </a>
     {% endif %}
       </p>
@@ -28,10 +28,10 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>{{ "event_summary" | trans() }}</th>
-                <th>{{ "event_start" | trans() }}</th>
-                <th>{{ "free_slots" | trans() }}</th>
-                <th>{{ "event_actions" | trans() }}</th>
+                <th>{{ "event_summary" | trans }}</th>
+                <th>{{ "event_start" | trans }}</th>
+                <th>{{ "free_slots" | trans }}</th>
+                <th>{{ "event_actions" | trans }}</th>
             </tr>
         </thead>
         <tbody>
@@ -42,15 +42,15 @@
         <tr>
             <td>{{ event.summary }}</td>
             <td>{{ event.startDate|date('d.m.Y') }} {{ event.startTime|date('H:i') }}</td>
-            <td>{{ event.totalSlots - event.usedSlots }}</td>
+            <td>{{ event.openSlots }}</td>
             <td>
                 {% if app.user and event.checkAttendee(app.user) %}
                 <a class="btn btn-danger" href="{{ path("vz_calendar_eventuser_delete", { 'eventId': event.id }) }}">
-                    {{ "unsign_up" | trans() }}
+                    {{ "unsign_up" | trans }}
                 </a>
                 {% elseif app.user %}
                 <a class="btn btn-primary" href="{{ path("vz_calendar_eventuser_create", { 'eventId': event.id }) }}">
-                    {{ "sign_up" | trans() }}
+                    {{ "sign_up" | trans }}
                 </a>
                 {% endif %}
             </td>
@@ -61,7 +61,7 @@
     </table>
     {% endif %}
 {% else %}
-    <h1>{{ "no_events_found" | trans() }}</h1>
+    <h1>{{ "no_events_found" | trans }}</h1>
 {% endif %}
 
 {% endblock %}

@@ -4,35 +4,31 @@
 
 <div class="hero-unit">
     <a class="btn btn-info" href="{{ path("vz_calendar_event_busview", { 'id': event.id }) }}">
-        {{ "event_busprintout" | trans() }}
+        {{ "event_busprintout" | trans }}
     </a>
-    <h1>{{ "next_event" | trans() }} {{ event.startDate|date('d.m.Y') }}</h1>
-    <h2>{{ event.summary }} {{ 'meeting_at' | trans({'%time%': event.startTime|date('H:i') }) }}</h2>
+    <h1>{{ "event_title" | trans({'%title%': event.summary, '%date%': event.startDate|date('d.m.Y')}) }}</h1>
+    <h2>{{ 'meeting_at' | trans({'%time%': event.startTime|date('H:i') }) }}</h2>
     <p>{{ event.details }}</p>
     <p>
-        {% if event.openSlots > 0 %}
-        {{ event.openSlots }}
-        {% else %}
-        {{ 'event_full' | trans() }}
-        {% endif %}
+        {{ 'available_slots' | transchoice(event.openSlots) }}
     </p>
-    <h3>Attendee list</h3>
+    <h3>{{ 'attendee_list' | trans }}</h3>
         {% for user in event.attendees %}
         <p>
-            {{ user }}
+            {{ user.user }}
             <a href="{{ path("vz_calendar_event_deleteuser", { 'id': event.id, 'userId': user.user.id } )}}"
-               class="btn btn-danger">{{ 'user_remove_from_event' | trans() }} </a>
+               class="btn btn-danger">{{ 'user_remove_from_event' | trans }} </a>
         </p>
         {% endfor %}
-    <h3>Email list</h3>
-    <p>{{ 'email_list_copy_paste' | trans() }}</p>
+    <h3>{{ 'email_list' | trans }}</h3>
+    <p>{{ 'email_list_copy_paste' | trans }}</p>
     <code>
         {{ event.getAttendeeEmails|join(', ') }}
     </code>
-    <h3>Log</h3>
+    <h3>{{ 'log' | trans }}</h3>
         {% for log in event.logs %}
         <p>
-            {{ log.logDate | date('d.m.Y H:i') }} {{ log.user.firstname }} {{ log.action }} {{ log.detail }}
+            {{ log.logDate | date('d.m.Y H:i') }} {{ log.user }} {{ log.action }} {{ log.detail }}
         </p>
         {% endfor %}
 </div>

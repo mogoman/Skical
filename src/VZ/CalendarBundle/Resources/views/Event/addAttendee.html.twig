@@ -7,7 +7,7 @@
 <form action="{{ path('vz_calendar_event_addattendee', { 'id': event.id }) }}" method="post" {{ form_enctype(form) }}>
     {% include "VZCalendarBundle:EventUser:_eventuserform.html.twig" with {'form': form } %}
 
-    <button type="submit" class="btn btn-primary">{{ "submit" | trans() }}</button>
+    <button type="submit" class="btn btn-primary">{{ "submit" | trans }}</button>
 </form>
 
 {% endblock %}

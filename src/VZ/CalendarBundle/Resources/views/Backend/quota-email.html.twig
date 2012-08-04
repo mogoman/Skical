@@ -1,9 +1,9 @@
-{{ 'quota_reached' | trans() }}: {# quota has been reached for the following events #}
+{{ 'quota_reached' | trans }}: {# quota has been reached for the following events #}
 {% for event in events %}
-{{ 'event_summary' | trans() }} : {{ event.summary }}
-{{ 'event_quota' | trans() }} : {{ event.quota }}
-{{ 'event_startdate' | trans() }} : {{ event.startDate | date('d.m.Y') }} @ {{ event.startTime | date('H:i') }}
-{{ 'event_filledslots' | trans() }} : {{ event.usedSlots }} / {{ event.totalSlots }}
+{{ 'event_summary' | trans }} : {{ event.summary }}
+{{ 'event_quota' | trans }} : {{ event.quota }}
+{{ 'event_startdate' | trans }} : {{ event.startDate | date('d.m.Y') }} @ {{ event.startTime | date('H:i') }}
+{{ 'event_filledslots' | trans }} : {{ event.usedSlots }} / {{ event.totalSlots }}
 
 ------------------------------------------------------
 {% endfor %}
