@@ -197,7 +197,7 @@ class EventController extends Controller
                 if ($event->addEventUser($eventUser) === false) {
                     $saveValid = false;
                     // set form error
-                    $form->addError(new FormError('not_enough_free_slots'));
+                    $form->addError(new FormError($this->get('translator')->trans('not_enough_free_slots')));
                 }
             }
 
@@ -242,6 +242,26 @@ class EventController extends Controller
      * @Template()
      */
     public function viewAction(Request $request, $id)
+    {
+        $em    = $this->getDoctrine()->getManager();
+
+        $event = $em->getRepository('VZCalendarBundle:Event')->find($id);
+
+        if (!$event) {
+            throw $this->createNotFoundException('event_notfound');
+        }
+        return array(
+            'event' => $event
+        );
+    }
+    /**
+     * View event. Show all event details as well as a list of people who are
+     * attending. This can be printed for the bus
+     *
+     * @Route("/{id}/busview", name="vz_calendar_event_busview")
+     * @Template()
+     */
+    public function busviewAction(Request $request, $id)
     {
         $em    = $this->getDoctrine()->getManager();
 

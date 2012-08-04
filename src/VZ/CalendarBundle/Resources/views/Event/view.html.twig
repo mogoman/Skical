@@ -3,8 +3,11 @@
 {% block content %}
 
 <div class="hero-unit">
+    <a class="btn btn-info" href="{{ path("vz_calendar_event_busview", { 'id': event.id }) }}">
+        {{ "event_busprintout" | trans() }}
+    </a>
     <h1>{{ "next_event" | trans() }} {{ event.startDate|date('d.m.Y') }}</h1>
-    <h2>{{ event.summary }} {{ 'meeting_at' | trans() }} {{ event.startTime|date('H:i') }}</h2>
+    <h2>{{ event.summary }} {{ 'meeting_at' | trans({'%time%': event.startTime|date('H:i') }) }}</h2>
     <p>{{ event.details }}</p>
     <p>
         {% if event.openSlots > 0 %}
@@ -21,6 +24,11 @@
                class="btn btn-danger">{{ 'user_remove_from_event' | trans() }} </a>
         </p>
         {% endfor %}
+    <h3>Email list</h3>
+    <p>{{ 'email_list_copy_paste' | trans() }}</p>
+    <code>
+        {{ event.getAttendeeEmails|join(', ') }}
+    </code>
     <h3>Log</h3>
         {% for log in event.logs %}
         <p>

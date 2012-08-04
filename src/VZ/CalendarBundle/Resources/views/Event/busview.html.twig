@@ -1,0 +1,62 @@
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Calendar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    {% block stylesheets %}
+    {% stylesheets
+                '%kernel.root_dir%/../vendor/twitter/bootstrap/docs/assets/css/bootstrap.css'
+                '%kernel.root_dir%/../vendor/twitter/bootstrap/docs/assets/css/bootstrap-responsive.css'
+                '@VZCalendarBundle/Resources/public/css/calendar.css'
+                output='assetic/*.css'
+            %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+    {% endblock %}
+</head>
+<body>
+
+<h1>{{ "next_event" | trans() }} {{ event.startDate|date('d.m.Y') }}</h1>
+<h2>{{ event.summary }} {{ 'meeting_at' | trans({'%time%': event.startTime|date('H:i') }) }}</h2>
+<p>{{ event.details }}</p>
+<p>
+    {% if event.openSlots > 0 %}
+    {{ event.openSlots }}
+    {% else %}
+    {{ 'event_full' | trans() }}
+    {% endif %}
+</p>
+<table class="table table-striped table-bordered">
+    <caption>
+        {{ 'attendee_list' | trans() }}
+    </caption>
+    <thead>
+        <tr>
+            <th>{{ 'name' | trans() }}</th>
+            <th>{{ 'is_member' | trans() }}</th>
+            <th>{{ 'reserved_slots' | trans() }}</th>
+            <th>{{ 'payment_method' | trans() }}</th>
+            <th>{{ 'amount_paid' | trans() }}</th>
+            <th>{# blank #}</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for user in event.attendees %}
+        <tr>
+            <td>{{ user }}</td>
+            <td>{% if user.user.isMember %}{{ 'yes' | trans() }}{% else %}{{ 'no' | trans() }}{% endif %}</td>
+            <td>{{ user.reservedSlots }}</td>
+            <td>{{ user.paymentMethod }}</td>
+            <td>[      ]</td>
+            <td>[      ]</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</body>
+{% endblock %}

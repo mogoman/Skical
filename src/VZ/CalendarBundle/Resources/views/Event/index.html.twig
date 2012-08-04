@@ -21,6 +21,9 @@
                 <a class="btn btn-success" href="{{ path("vz_calendar_event_view", { 'id': event.id }) }}">
                     {{ "event_view" | trans() }}
                 </a>
+                <a class="btn btn-info" href="{{ path("vz_calendar_event_busview", { 'id': event.id }) }}">
+                    {{ "event_busprintout" | trans() }}
+                </a>
                 <a class="btn btn-primary" href="{{ path("vz_calendar_event_edit", { 'id': event.id }) }}">
                     {{ "event_edit" | trans() }}
                 </a>

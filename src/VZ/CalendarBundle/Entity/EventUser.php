@@ -18,7 +18,8 @@ class EventUser
     protected $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="User")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="events")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      * @var type
      */
     private $user;

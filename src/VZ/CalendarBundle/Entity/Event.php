@@ -55,7 +55,7 @@ class Event
 
     /**
      *
-     * @ORM\Column(type="string", length=32768)
+     * @ORM\Column(type="string", length=32768, nullable=true)
      */
     protected $details;
 
@@ -97,7 +97,7 @@ class Event
     /**
      * Flag set when the quota email has been sent
      *
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=true)
      */
     public $quotaNotified;
 
@@ -572,5 +572,20 @@ class Event
     public function getLogs()
     {
         return $this->logs;
+    }
+
+    /**
+     * returns as a list the emails of the attendees of this event
+     *
+     * @return Array
+     */
+    public function getAttendeeEmails()
+    {
+        $emails = array();
+        foreach ($this->attendees as $attendee) {
+            $user = $attendee->getUser();
+            $emails[] = $user->getEmail();
+        }
+        return $emails;
     }
 }

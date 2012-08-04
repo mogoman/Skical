@@ -2,7 +2,7 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" datatype="plaintext" original="" >
         <body>
-            <!-- event page -->
+            <!-- home page -->
             <trans-unit id="event_create_new">
                 <source>event_create_new</source>
                 <target>Create</target>
@@ -31,6 +31,20 @@
                 <source>event_delete</source>
                 <target>Delete</target>
             </trans-unit>
+            <trans-unit id="event_joining">
+                <source>event_joining</source>
+                <target>Join the event &quot;%name%&quot;</target>
+            </trans-unit>
+            <trans-unit id="available_slots">
+                <source>available_slots</source>
+                <target>
+                {0} This event is now full|{1} There is one more place available|]1,Inf] There are %count% places available
+                </target>
+            </trans-unit>
+            <trans-unit id="available_slotx">
+                <source>available_slotx</source>
+                <target>{0} There are no apples|{1} There is one apple|]1,Inf] There are %count% apples</target>
+            </trans-unit>
             <trans-unit id="not_enough_free_slots">
                 <source>not_enough_free_slots</source>
                 <target>Not enough free spaces available</target>
@@ -52,22 +66,58 @@
                 <source>unsign_up</source>
                 <target>Cancel attendance</target>
             </trans-unit>
-            <trans-unit id="event_full">
-                <source>event_full</source>
-                <target>This event is now full</target>
-            </trans-unit>
             <trans-unit id="meeting_at">
                 <source>meeting_at</source>
-                <target>Meeting time is </target>
+                <target>Meeting time is %time%</target>
+            </trans-unit>
+            <trans-unit id="free_slots">
+                <source>free_slots</source>
+                <target>Slots available</target>
             </trans-unit>
 
+            <trans-unit id="email_list_copy_paste">
+                <source>email_list_copy_paste</source>
+                <target>Use the below list to send a email to all of the attendees</target>
+            </trans-unit>
+
+            <!-- event action buttons -->
+            <trans-unit id="event_view">
+                <source>event_view</source>
+                <target>View</target>
+            </trans-unit>
+            <trans-unit id="event_adduser">
+                <source>event_adduser</source>
+                <target>New attendee</target>
+            </trans-unit>
+            <trans-unit id="event_busprintout">
+                <source>event_busprintout</source>
+                <target>Bus printout</target>
+            </trans-unit>
 
             <!-- errors / warnings -->
             <trans-unit id="event_notfound">
                 <source>event_notfound</source>
                 <target>That event was not found</target>
             </trans-unit>
+            <!-- errors / warnings -->
+            <trans-unit id="event_alreadyjoined">
+                <source>event_alreadyjoined</source>
+                <target>You are already attending that event</target>
+            </trans-unit>
 
+            <!-- log in form -->
+            <trans-unit id="lost_password">
+                <source>lost_password</source>
+                <target>Lost Password</target>
+            </trans-unit>
+            <trans-unit id="register">
+                <source>register</source>
+                <target>Register</target>
+            </trans-unit>
+            <trans-unit id="login">
+                <source>login</source>
+                <target>Login</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

@@ -15,3 +15,7 @@ parameters:
 
     locale:            en
     secret:            ThisTokenIsNotSoSecretChangeIt
+
+    cal_mail_from:     noreply@test.com
+    cal_mail_quota_to: quotas@your-domain.com
+    cal_mail_quota_subject: "Ski Calendar: one or more events has reached their quota"

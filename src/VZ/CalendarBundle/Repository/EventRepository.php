@@ -33,7 +33,7 @@ class EventRepository extends EntityRepository
 
         $query = $em->createQuery(
             'SELECT e FROM VZCalendarBundle:Event e '
-            . 'WHERE e.quotaNotifyDate >= :date '
+            . 'WHERE :date >= e.quotaNotifyDate '
             . 'AND e.usedSlots > e.quota '
             . 'AND e.quotaNotified is null ORDER BY e.startDate'
         )->setParameter('date', date('Y-m-d H:i:s', $date));

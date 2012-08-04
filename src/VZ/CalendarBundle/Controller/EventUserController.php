@@ -37,6 +37,11 @@ class EventUserController extends Controller
             throw $this->createNotFoundException('event_notfound');
         }
 
+        // if this user is already attending, throw an error
+        if ($event->checkAttendee($this->get('security.context')->getToken()->getUser())) {
+            throw $this->createNotFoundException('event_alreadyjoined');
+        }
+
         $eventUser = new EventUser();
         $eventUser->setEvent($event);
         $eventUser->setUser($this->get('security.context')->getToken()->getUser());
@@ -80,7 +85,7 @@ class EventUserController extends Controller
                 if ($event->addEventUser($eventUser) === false) {
                     $saveValid = false;
                     // set form error
-                    $form->addError(new FormError('not_enough_free_slots'));
+                    $form->addError(new FormError($this->get('translator')->trans('not_enough_free_slots')));
                 }
 
             }

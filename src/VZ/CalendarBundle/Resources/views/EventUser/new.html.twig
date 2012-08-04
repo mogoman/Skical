@@ -2,7 +2,8 @@
 
 {% block content %}
 
-<h1>{{ "event_joining" | trans() }} {{ event.summary }}</h1>
+<h1>{{ "event_joining" | trans({'%name%': event.summary }) }}</h1>
+<h2>{{ 'available_slots' | transchoice(event.openSlots) }}</h2>
 
 <form action="{{ path('vz_calendar_eventuser_new', { 'eventId': event.id }) }}" method="post" {{ form_enctype(form) }}>
     {% include "VZCalendarBundle:EventUser:_eventuserform.html.twig" with {'form': form } %}
@@ -11,8 +12,3 @@
 </form>
 
 {% endblock %} 
-
-
-
-
-

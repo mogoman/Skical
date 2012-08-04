@@ -98,6 +98,9 @@ Todo list completed
 Version 0.8.4
 --------------
 - add logging for events
+- write job control to be able to auto email on quotas
+- create bus printout
+- prevent users from signing up twice to an event
 
 Version 0.7.30
 --------------
@@ -129,5 +132,5 @@ pre 0.7.18
 
 Todo list still to do
 ---------------------
-- write job control to be able to auto email on quotas etc
 - finish off translations
+
