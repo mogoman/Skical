@@ -7,7 +7,7 @@ Designed by Warren van der Woude
 
 License: WTFPL (http://sam.zoy.org/wtfpl/)
 
-Needs Symfony 2.1 - https://github.com/symfony/symfony-standard
+Needs Symfony 2.2 - https://github.com/symfony/symfony-standard
 
 How To install
 --------------
