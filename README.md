@@ -28,6 +28,13 @@ that need to be added to the configuration
 
     php composer.phar update
 
+Note that if you get an error like this
+
+    [LogicException]
+    Composer repositories that have providers can not load the complete list of packages, use getProviderNames instead.
+
+Then you are running the command with "install" and not "update"
+
 ### 4) setup the database
 
 Edit the
