@@ -26,7 +26,7 @@ that need to be added to the configuration
 
 ### 3) install vendors and libraries
 
-    php composer.phar install
+    php composer.phar update
 
 ### 4) setup the database
 
