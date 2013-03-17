@@ -91,7 +91,7 @@
                 "name": "jquery/jquery-ui-datepicker-de",
                 "version": "1.8.21",
                 "dist": {
-                    "url": "http://jquery-ui.googlecode.com/svn/trunk/ui/i18n/jquery.ui.datepicker-de.js",
+                    "url": "http://jquery-ui.googlecode.com/svn/tags/latest/ui/minified/i18n/jquery.ui.datepicker-de.min.js",
                     "type": "file"
                 }
             }
